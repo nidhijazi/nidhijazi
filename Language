@@ -12,7 +12,7 @@ pipeline {
              echo 'Execute C  script'
              sh '''
               chmod 755 ${WORKSPACE}/factorial.c
-              ./${WORKSPACE}/factorial.c 
+              .${WORKSPACE}/factorial.c 
             '''
          }
       }
