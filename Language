@@ -23,7 +23,7 @@ pipeline {
             echo 'Execute python script'
             sh '''
               chmod 755 ${WORKSPACE}/factorial.py
-              ${WORKSPACE}/factorial.py 
+              python3 ${WORKSPACE}/factorial.py 
             '''
             
          }
