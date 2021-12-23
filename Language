@@ -7,14 +7,12 @@ pipeline {
           checkout scm
         } 
       }
-      stage('Execute C exe file') {
+      stage('Execute C file') {
          steps {
-            echo 'Compilation process..'
-            sh '''
-            '''
-            sh '''
-                echo "Running bin file"
-                
+             echo 'Execute C  script'
+             sh '''
+              chmod 755 ${WORKSPACE}/factorial.c
+              gcc ${WORKSPACE}/factorial.c 
             '''
          }
       }
