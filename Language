@@ -29,7 +29,11 @@ pipeline {
       }
       stage('Execute bash script') {
          steps {
-            echo 'bash script..'
+            echo 'Execute bash script'
+            sh '''
+              chmod 755 ${WORKSPACE}/factorial.sh
+              ./factorial.sh
+            '''
          }
       }
       
