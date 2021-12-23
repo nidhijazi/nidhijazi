@@ -8,7 +8,7 @@ pipeline {
         } 
       }
       stage('Execute C file') {
-         when {${LANGUAGE} = All || C
+         when {${LANGUAGE} == All || C
           steps {
              echo 'Execute C  script'
              sh '''
