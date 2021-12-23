@@ -5,8 +5,12 @@ pipeline {
       stage('Clone Sources') {
         steps {
           checkout scm
-        } 
-      }
+        }
+        stage('ENV') {
+          steps {
+          echo 'env'
+          } 
+        }
       stage('Execute C file') {
          when {${LANGUAGE} == 'All' || 'C'
           steps {
