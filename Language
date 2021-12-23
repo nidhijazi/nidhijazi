@@ -1,4 +1,4 @@
-kpipeline {
+pipeline {
   agent { node { label 'Slave01' } }
 
    stages {
