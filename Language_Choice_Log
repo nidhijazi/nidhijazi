@@ -9,7 +9,7 @@ pipeline {
 	  }  
    stage('Execute C file') {
         when {
-             expression {env.Language_Choice == 'All' || env.Language_Choice == 'C'}
+             expression {env.Language_Choice == 'All' || env.Language_Choice == 'c'}
         }
 		steps {
              echo 'Execute C  script'
