@@ -9,7 +9,7 @@ pipeline {
 	  }  
 	  stage('Execute C file') {
         when {
-             expression {env.Language_Choice == 'All' || env.Language_Choice == 'C'}
+             expression {env.Language == 'All' || env.Language == 'C'}
         }
 		steps {
              echo 'Execute C  script'
@@ -22,7 +22,7 @@ pipeline {
       } 
       stage('Execute python script') {
         when {
-             expression {env.Language_Choice == 'All' || env.Language_Choice == 'Python'}
+             expression {env.Language == 'All' || env.Language == 'Python'}
         }
 		steps {
             echo 'Execute python script'
@@ -35,7 +35,7 @@ pipeline {
        }
        stage('Execute bash script') {
         when {
-             expression {env.Language_Choice == 'All' || env.Language_Choice == 'Bash'}
+             expression {env.Language == 'All' || env.Language == 'Bash'}
         }
 		steps {
             echo 'Execute bash script'
