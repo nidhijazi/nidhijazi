@@ -6,51 +6,53 @@ pipeline {
         steps {
           checkout scm
         }
-       } 
-        stage('ENV') {
-          steps {
+	  }  
+	  stage('ENV') {
+        steps {
           echo 'env'
-          } 
-        }
+        } 
+      }
       stage('Execute C file') {
         when {
              expression {env.Language_Choice == 'All' || env.Language_Choice == 'C'}
-         }
-          steps {
+        }
+		steps {
              echo 'Execute C  script'
              sh '''
               chmod 755 ${WORKSPACE}/factorial.c
               gcc factorial.c -o factorial
               ./factorial 
             '''
-          }
-         } 
-      }
+        }
+       } 
       stage('Execute python script') {
-         when {
+        when {
              expression {env.Language_Choice == 'All' || env.Language_Choice == 'Python'}
-         }
-         steps {
+        }
+		steps {
             echo 'Execute python script'
             sh '''
               chmod 755 ${WORKSPACE}/factorial.py
               python3 factorial.py 
             '''
             
-         }
-      }
+        } 
+       }
+      
       stage('Execute bash script') {
-         when {
+        when {
              expression {env.Language_Choice == 'All' || env.Language_Choice == 'Bash'}
-         }
-         steps {
+        }
+		steps {
             echo 'Execute bash script'
             sh '''
               chmod 755 ${WORKSPACE}/factorial.sh
               ./factorial.sh
             '''
-         }
+        }
       }
       
-   }
-
+    }
+}
+	
+	
