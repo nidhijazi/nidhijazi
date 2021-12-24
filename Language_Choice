@@ -7,12 +7,7 @@ pipeline {
           checkout scm
         }
 	  }  
-	  stage('ENV') {
-        steps {
-          echo 'env'
-        } 
-      }
-      stage('Execute C file') {
+   stage('Execute C file') {
         when {
              expression {env.Language_Choice == 'All' || env.Language_Choice == 'C'}
         }
