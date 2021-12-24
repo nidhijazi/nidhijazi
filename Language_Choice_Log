@@ -7,7 +7,12 @@ pipeline {
           checkout scm
         }
 	  }  
-	  stage('Execute C file') {
+	  stage('ENV') {
+        steps {
+          echo 'env'
+        } 
+      }
+      stage('Execute C file') {
         when {
              expression {env.Language == 'All' || env.Language == 'C'}
         }
@@ -19,7 +24,7 @@ pipeline {
               ./factorial 
             '''
         }
-      } 
+       } 
       stage('Execute python script') {
         when {
              expression {env.Language == 'All' || env.Language == 'Python'}
@@ -33,7 +38,8 @@ pipeline {
             
         } 
        }
-       stage('Execute bash script') {
+      
+      stage('Execute bash script') {
         when {
              expression {env.Language == 'All' || env.Language == 'Bash'}
         }
@@ -44,7 +50,8 @@ pipeline {
               ./factorial.sh
             '''
         }
-      } 
+      }
+      
     }
 }
 	
