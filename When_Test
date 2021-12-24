@@ -1,0 +1,36 @@
+pipeline {
+   agent any
+    
+   stages {
+       stage('Stage_Choice') {
+         steps {
+            sh 'echo $Stage_Choice'
+         }
+        }
+       
+      stage('Build') {
+         when {
+             expression {env.Stage_Choice == 'All' || env.Stage_Choice == 'B'}
+         }   
+         steps {
+            echo 'The Build is started'
+         }
+       }
+	  stage('Test') {
+         when {
+             expression {env.Stage_Choice == 'All' || env.Stage_Choice == 'T'}
+         }
+         steps {
+            echo 'The Test is started'
+         }
+      }
+	  stage('Deploy') {
+         when {
+             expression {env.Stage_Choice == 'All' || env.Stage_Choice == 'D'}
+         }
+         steps {
+            echo 'The Deploy is started'
+         }
+      }
+   }
+}
